@@ -39,4 +39,5 @@ public class LessonGenericType1 {
 		genericFrutsArray[genericFrutsArray.length-2] = new Apple("sweet too", "Japanese Apple");// RuntimeException ArrayStoreException
 		
 	}
+	
 }
