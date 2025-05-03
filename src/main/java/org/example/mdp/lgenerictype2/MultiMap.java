@@ -38,20 +38,40 @@ public class MultiMap<K, T, V extends MultiSet<T>> {
 		return rtn;
 	}
 
+	/**
+	 * Un metodo get che, presa in input una chiave, se la chiave è presente
+	 * restituisce l’insieme ad essa associato, altrimenti restituisce null.
+	 * 
+	 * @param key
+	 * @return the set to which the specified key is mapped, or null if contains
+	 *         this multimap contains no mapping for the key.
+	 */
 	public V get(K key) {
 		return multimap.get(key);
 	}
 
+	/**
+	 * Un metodo contains che, presa in input una chiave e un valore, restituisce
+	 * true se l’associazione tra la chiave e il valore è contenuta nella
+	 * multimappa, false altrimenti
+	 * 
+	 * @param key
+	 * @param value
+	 * @return true if this multimap contains a mapping for the specified key and
+	 *         value.
+	 */
 	public boolean contains(K key, V value) {
 		return multimap.get(key).equals(value);
 	}
 
 	/**
-	 * Un metodo intersect che, presa in input una chiave k e un insieme di valori set, 
-	 * 1. Se la chiave è presente rende l’insieme dei valori associato alla chiave uguale 
-	 *    all’intersezione tra l’insieme originale e l’insieme set preso in input. 
-	 * 2. Se set è pari a null, la chiave k viene rimossa dalla multimappa. 
-	 * 3. Se la chiave non è presente, il metodo lancia l’eccezione IllegalArgumentException.
+	 * Un metodo intersect che, presa in input una chiave k e un insieme di valori
+	 * set, 1. Se la chiave è presente rende l’insieme dei valori associato alla
+	 * chiave uguale all’intersezione tra l’insieme originale e l’insieme set preso
+	 * in input. 2. Se set è pari a null, la chiave k viene rimossa dalla
+	 * multimappa. 3. Se la chiave non è presente, il metodo lancia l’eccezione
+	 * IllegalArgumentException.
+	 * 
 	 * @param key
 	 * @param value
 	 */
@@ -84,6 +104,7 @@ public class MultiMap<K, T, V extends MultiSet<T>> {
 	 * presenti anche nella multimappa presa in input e, per ognuna di queste
 	 * chiavi, l’insieme dei valori diventerà uguale all’intersezione degli insiemi
 	 * dei valori associati alla chiave nelle due multimappe.
+	 * 
 	 * @param inputMap
 	 */
 	public void intersectMultiMap(MultiMap<K, T, V> inputMap) {
@@ -94,15 +115,16 @@ public class MultiMap<K, T, V extends MultiSet<T>> {
 				intersectKeys.add(key);
 		}
 		// remove NOT common keys from original
-		if (intersectKeys.isEmpty()) {	// if zero common key remove all element of multimap.
+		if (intersectKeys.isEmpty()) { // if zero common key remove all element of multimap.
 			multimap.clear();
 			return;
 		} else {
 			for (K key : multimap.keySet())
-				if (!intersectKeys.contains(key))// if the key of original multimap is not common between origina and input remove it.
+				if (!intersectKeys.contains(key))// if the key of original multimap is not common between origina and
+													// input remove it.
 					multimap.remove(key);
 		}
-		
+
 		// intersects sets
 		for (K commonKey : intersectKeys) {
 			V val1 = multimap.get(commonKey);

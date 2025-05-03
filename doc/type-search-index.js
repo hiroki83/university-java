@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"org.example.mdp.lgenerictype2","l":"LessonGenericType2"},{"p":"org.example.mdp.lgenerictype2","l":"MultiMap"},{"p":"org.example.mdp.lgenerictype2","l":"MultiSet"}];updateSearchResults();

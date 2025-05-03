@@ -60,41 +60,43 @@ public class LessonGenericType2 {
 	/**
 	 * Examine the function of method intersect().
 	 * 
-	 * Un metodo intersect che, presa in input una chiave k e un insieme di valori set, 
-	 * se la chiave è presente rende l’insieme dei valori associato alla chiave uguale all’intersezione tra 
-	 * l’insieme originale e l’insieme set preso in input. 
-	 * Se set è pari a null, la chiave k viene rimossa dalla multimappa. 
-	 * Se la chiave non è presente, il metodo lancia l’eccezione IllegalArgumentException.
+	 * Un metodo intersect che, presa in input una chiave k e un insieme di valori
+	 * set, se la chiave è presente rende l’insieme dei valori associato alla chiave
+	 * uguale all’intersezione tra l’insieme originale e l’insieme set preso in
+	 * input. Se set è pari a null, la chiave k viene rimossa dalla multimappa. Se
+	 * la chiave non è presente, il metodo lancia l’eccezione
+	 * IllegalArgumentException.
 	 */
 	private static void examine_exercise4_intersect() {
 		// data preparation for examine_exercise4_intersect.
 		// declear the variable "originalMultiplMap".
 		MultiMap<String, Integer, MultiSet<Integer>> originalMultiMap = new MultiMap<>();
-		originalMultiMap.put("intersect1", createMultiSet(Arrays.asList(1,1,1,2,4,4,5)));
-		originalMultiMap.put("intersect2", createMultiSet(Arrays.asList(6,6,6,7,9,9,10)));
-		
+		originalMultiMap.put("intersect1", createMultiSet(Arrays.asList(1, 1, 1, 2, 4, 4, 5)));
+		originalMultiMap.put("intersect2", createMultiSet(Arrays.asList(6, 6, 6, 7, 9, 9, 10)));
+
 		// start to examine the function of the method intersect().
 		System.out.println("start to examine the function of the method intersect()");
 		System.out.println("show data prepared.");
 		System.out.println("\t" + originalMultiMap);
-		//case1: intersect
-		originalMultiMap.intersect("intersect1", createMultiSet(Arrays.asList(1,1,2,4,7,7)));
+		// case1: intersect
+		originalMultiMap.intersect("intersect1", createMultiSet(Arrays.asList(1, 1, 2, 4, 7, 7)));
 		System.out.println("show data executed of case1: intersect.");
 		System.out.println("\t" + originalMultiMap + ", parameters: key=intersect1, MultiSet=[1,1,2,4,7,7]");
-		//case2: zero intersect
-		originalMultiMap.intersect("intersect2", createMultiSet(Arrays.asList(1,1,2,4,7,7)));
+		// case2: zero intersect
+		originalMultiMap.intersect("intersect2", createMultiSet(Arrays.asList(1, 1, 2, 4, 7, 7)));
 		System.out.println("show data executed of case2: zero intersect.");
 		System.out.println("\t" + originalMultiMap + ", parameters: key=intersect2, MultiSet=[1,1,2,4,7,7]");
-		//case3: throw the IllegalArgumentException
+		// case3: throw the IllegalArgumentException
 		try {
 			originalMultiMap.intersect("intersect3", null);
 		} catch (IllegalArgumentException e) {
-			System.out.println("case3: showing this message is meaning be throwned the IllegalArgumentException.  parameters: key=intersect3, MultiSet=null");			
+			System.out.println(
+					"case3: showing this message is meaning be throwned the IllegalArgumentException.  parameters: key=intersect3, MultiSet=null");
 		}
-		
+
 		System.out.println("e n d to examine the function of the method intersect()");
 	}
-	
+
 	/**
 	 * Examine the function of method intersectMultiMap().
 	 * 
@@ -118,11 +120,11 @@ public class LessonGenericType2 {
 
 		// add sets to multimaps
 		// case1: intersect
-		originalMultiMap.put("intersect1", createMultiSet(Arrays.asList(1,1,1,2,4,4,5)));
-		inputMultiMap.put("intersect1", createMultiSet(Arrays.asList(1,1,2,4,7,7)));
+		originalMultiMap.put("intersect1", createMultiSet(Arrays.asList(1, 1, 1, 2, 4, 4, 5)));
+		inputMultiMap.put("intersect1", createMultiSet(Arrays.asList(1, 1, 2, 4, 7, 7)));
 		// case2: without intersect
-		originalMultiMap.put("intersect2", createMultiSet(Arrays.asList(6,6,6,7,9,9,10)));
-		inputMultiMap.put("intersect2", createMultiSet(Arrays.asList(1,1,2,4,8,8)));
+		originalMultiMap.put("intersect2", createMultiSet(Arrays.asList(6, 6, 6, 7, 9, 9, 10)));
+		inputMultiMap.put("intersect2", createMultiSet(Arrays.asList(1, 1, 2, 4, 8, 8)));
 		// case3: NOT common key
 		originalMultiMap.put("intersect3", createMultiSet(Arrays.asList(1)));
 		// execute the method
@@ -135,7 +137,7 @@ public class LessonGenericType2 {
 		System.out.println("\t" + inputMultiMap);
 		System.out.println("e n d to examine the function of the method intersectMultiMap()");
 	}
-	
+
 	private static <P> MultiSet<P> createMultiSet(List<P> valueList) {
 		MultiSet<P> rtn = new MultiSet<>();
 		for (P p : valueList) {
